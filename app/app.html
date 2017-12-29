@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Money Transfer POS</title>
+    <link rel="stylesheet" href="../node_modules/react-bootstrap-table/dist/react-bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="./utils/dist/css/react-table.css">
+    <link rel="stylesheet" type="text/css" href="./utils/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./utils/bootstrap/css/bootstrap-reboot.css">
+    <link rel="stylesheet" type="text/css" href="./utils/bootstrap/css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="./utils/bootstrap/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="utils/bootstrap/css/bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="utils/dist/css/AdminLTE.min.css">
+    <!-- Material Design -->
+    <link rel="stylesheet" href="utils/dist/css/bootstrap-material-design.min.css">
+    <link rel="stylesheet" href="utils/dist/css/ripples.min.css">
+    <link rel="stylesheet" href="utils/dist/css/MaterialAdminLTE.min.css">
+    <!-- MaterialAdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="utils/dist/css/skins/all-md-skins.min.css">
+    <!-- Morris chart -->
+    <link rel="stylesheet" href="utils/plugins/morris/morris.css">
+    <!-- jvectormap -->
+    <link rel="stylesheet" href="utils/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+    <!-- Date Picker -->
+    <link rel="stylesheet" href="utils/plugins/datepicker/datepicker3.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="utils/plugins/daterangepicker/daterangepicker.css">
+    <!-- bootstrap wysihtml5 - text editor -->
+    <link rel="stylesheet" href="utils/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+
+
+    <link rel="manifest" href="manifest.json">
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/paper/bootstrap.min.css" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"> -->
+
+    <script src="utils/jQuery/jquery-2.2.3.min.js" type="text/javascript" charset="utf-8" async defer></script>
+    <!-- <script src="utils/plugins/jQuery/jquery-2.2.3.min.js"></script> -->
+    <!-- <script src="utils/plugins/jQueryUI/jquery-ui.min.js"></script> -->
+    <script>
+      (function() {
+        if (!process.env.HOT) {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = './dist/style.css';
+          // HACK: Writing the script path should be done with webpack
+          document.getElementsByTagName('head')[0].appendChild(link);
+        }
+      }());
+    </script>
+  </head>
+  <body style="margin:0px; color:black;">
+    <div id="root"></div>
+
+    <script>
+      {
+        const scripts = [];
+
+        // Dynamically insert the DLL script in development env in the
+        // renderer process
+        if (process.env.NODE_ENV === 'development') {
+          scripts.push('../dll/renderer.dev.dll.js');
+        }
+
+        // Dynamically insert the bundled app script in the renderer process
+        const port = process.env.PORT || 1212;
+        scripts.push(
+          (process.env.HOT)
+            ? 'http://localhost:' + port + '/dist/renderer.dev.js'
+            : './dist/renderer.prod.js'
+        );
+
+        document.write(
+          scripts
+            .map(script => '<script defer src="' + script + '"><\/script>')
+            .join('')
+        );
+      }
+    </script>
+
+
+<!-- jQuery UI 1.11.4 -->
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script src="utils/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="utils/jQueryUI/jquery-ui.js" type="text/javascript" charset="utf-8" async defer></script>
+
+    <!-- <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script> -->
+    <!-- Bootstrap 3.3.6 -->
+    <script src="utils/bootstrap/js/bootstrap.min.js"></script>
+<!-- Material Design -->
+
+  </body>
+</html>

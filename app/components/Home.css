@@ -1,0 +1,32 @@
+.container {
+/*  position: absolute;
+  top: 10px;
+  left: 10px;
+  text-align: center;*/
+margin:10px;
+flex:1;
+}
+
+.container h2 {
+  font-size: 5rem;
+}
+
+.container a {
+  font-size: 1.4rem;
+}
+.title{
+  color:#8BC34A;
+}
+.cardview{
+  padding-left: 10px;
+  padding-right: 15px;
+  background-color:#8BC34A;
+  justify-content: space-between;
+}
+.cardview h3 {
+  color:#fff;
+  padding:10px;
+}
+.boxContainer{
+  flex:1;
+}
